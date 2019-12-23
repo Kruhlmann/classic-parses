@@ -22,7 +22,7 @@ bot.command :logs do |event, *args|
     top_parses = {}
     bosses = parses.map {|p| p["encounterName"]}.uniq
     bosses.each do |boss|
-      filtered_parses = parses.filter {|p| p["encounterName"] == boss}
+      filtered_parses = parses.select {|p| p["encounterName"] == boss}
       top_parse = filtered_parses.max {|a,b| a["percentile"] - b["percentile"]}
       top_parses[boss] = top_parse
     end
